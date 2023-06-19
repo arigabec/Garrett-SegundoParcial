@@ -8,7 +8,7 @@ export const RegisterPage = () => {
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
-              label="Email"
+              label="Correo"
               type="email"
               placeholder="email@gmail.com"
               fullWidth
@@ -16,7 +16,7 @@ export const RegisterPage = () => {
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
-              label="Password"
+              label="Contraseña"
               type="password"
               placeholder="Contraseña"
               fullWidth
@@ -24,7 +24,7 @@ export const RegisterPage = () => {
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
-              label="passwordVerified"
+              label="Verificar contraseña"
               type="password"
               placeholder="Verificar Password"
               fullWidth
