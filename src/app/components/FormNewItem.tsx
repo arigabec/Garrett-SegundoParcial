@@ -3,8 +3,9 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useState } from "react";
 import { useDispatch } from "../../context/ContextProvider";
 import { useNavigate } from 'react-router-dom';
+import { types } from "../../context/storeReducer";
 
-const FormNewItem = ({ items, setItems, setNewItem }) => {
+const FormNewItem = ({ items, setItems, setNewItem, type }) => {
     const [producto, setProducto] = useState("");
     const [categoria, setCategoria] = useState("");
     const [cantidad, setCantidad] = useState("");
@@ -21,7 +22,7 @@ const FormNewItem = ({ items, setItems, setNewItem }) => {
             },
         ];
         console.log(item);
-        // dispatch({ type: types.login });    
+        dispatch({ type: types.addItem }, item);    
         navigate("/");
         // setItems([...items, ...item]);
         // setNewItem(false);
@@ -71,7 +72,7 @@ const FormNewItem = ({ items, setItems, setNewItem }) => {
                         sx={{ m:3, position: "center" }} 
                         endIcon={<ShoppingBasketIcon />}
                     >
-                        Añadir a la lista
+                        { type }
                     </Button>
                 </Box>
             </form>

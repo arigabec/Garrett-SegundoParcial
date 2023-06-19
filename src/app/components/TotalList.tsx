@@ -1,7 +1,8 @@
 import { Grid, Typography } from "@mui/material";
+import { useStore } from "../../context/ContextProvider";
 
-export const TotalList = ({ items }) => {
-    const total = items.reduce((total) => total + 1, 0);
+export const TotalList = ( ) => {
+    const { items } = useStore();
   
     return (
         <Grid container
@@ -10,10 +11,11 @@ export const TotalList = ({ items }) => {
             className='box-shadow'
             sx={{ 
                     width: { sm: 600 },
-                    padding: 3, 
+                    padding: 2, 
                     borderRadius: 2 
-        }}>
-            <Typography variant='h8' sx={{ mb: 0, fontWeight: 'bold' }}> Cantidad de productos en lista: {total} </Typography>
+            }}
+        >
+            <Typography variant='h8' sx={{ fontWeight: 'bold' }}> Cantidad de productos en lista: {items.length} </Typography>
         </Grid>
     );
 };

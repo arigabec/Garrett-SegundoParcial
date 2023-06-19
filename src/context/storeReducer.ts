@@ -1,24 +1,33 @@
 const types = {
-  login: "login User",
-  logout: "log out User",
+  addItem: "adding item",
+  deleteItem: "deleting item",
 };
 
 const initialValues = {
-  auth: false,
+  items : [
+    {
+      producto: "Zanahoria",
+      cantidad: "300g",
+      categoria: "Abarrotes",
+    },
+    {
+      producto: "Zanahoria2",
+      cantidad: "300g",
+      categoria: "Verduras",
+    }
+  ]
 };
 
 const storeReducer = (state, action) => {
   switch (action.type) {
-    case types.login:
+    case types.addItem:
       return {
         ...state,
-        auth: true,
-      };
-    case types.logout:
+    };
+    case types.deleteItem:
       return {
         ...state,
-        auth: false,
-      };
+    };
     default:
       return state;
   }

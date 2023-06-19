@@ -19,7 +19,7 @@ export const Layout = ({ children, title = '' }) => {
             padding: 3, 
             borderRadius: 2 
         }}>
-          <Typography variant='h5' sx={{ mb: 1 }}>{ title }</Typography>
+          <Typography variant='h5' sx={{ mb: 1, color: "secondary.main", fontWeight: 'bold', textAlign: "center" }}>{ title }</Typography>
             { children }
         </Grid>
 

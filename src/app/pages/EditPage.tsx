@@ -1,14 +1,14 @@
 import FormNewItem from "../components/FormNewItem"
 import { Layout } from "../layout/Layout"
 
-export const NewItemPage = ({ items, setItems, setNewItem }) => {
+export const EditPage = ({ items, setItems, setNewItem }) => {
   return (
-    <Layout title="Añadir producto"> 
+    <Layout title="Editar producto"> 
       <FormNewItem 
         items={items}
         setItems={setItems}
         setNewItem={setNewItem}
-        type = "Añadir"
+        type = "Editar"
       />  
     </Layout>
   )

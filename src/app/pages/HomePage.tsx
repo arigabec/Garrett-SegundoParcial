@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Divider, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch } from "../../context/ContextProvider";
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +13,7 @@ export const HomePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const addItem = () => {
-        // dispatch({ type: types.login });    
+    const addItem = () => {  
         navigate("/add-item");
     };
 
@@ -32,10 +31,9 @@ export const HomePage = () => {
     <>
         <Layout title="Lista de compras">
             <ItemList items={items} setItems={setItems} setNewItem={setNewItem} />
-
-            <TotalList items={items} />
-
-            <Button variant="contained" sx={{ backgroundColor: 'secondary.main' }} endIcon={<AddIcon />} onClick={addItem}>
+            <Divider />
+            <TotalList/>
+            <Button variant="contained" sx={{ backgroundColor: 'secondary.main', m:2 }} endIcon={<AddIcon />} onClick={addItem}>
                 Añadir producto
             </Button>
         </Layout>
