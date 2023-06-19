@@ -1,7 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Description from './Description';
-import { useState } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { ButtonTask } from './ButtonTask';
 import { Box } from '@mui/material';
 import { useDispatch } from "../../context/ContextProvider";
@@ -14,6 +14,7 @@ import IconoBebidas from "../assets/drinks.png";
 import IconoHogar from "../assets/home.png";
 import IconoMascotas from "../assets/pets.png";
 import IconoHigiene from "../assets/cleaning.png";
+import { types } from '../../context/storeReducer';
 
 const diccionarioIconos = {
     Abarrotes: IconoAbarrotes,
@@ -27,11 +28,15 @@ const diccionarioIconos = {
 };
 
 
-const Item = ({ item, setNewItem }) => {
+const Item = ({ item }) => {
     const [completado, setCompletado] = useState(false);
     const [visible, setVisible] = useState(true);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const responseMemoized = useMemo(() => {
+        console.log('Se renderizo la card');
+      }, []);
 
     const checkTask = () => {
         setCompletado(!completado);
@@ -39,15 +44,16 @@ const Item = ({ item, setNewItem }) => {
 
     const deleteTask = () => {
         setVisible(!visible);
+        dispatch({ type: types.deleteItem, payload: item });
     };
 
     const editTask = () => {
-        setNewItem(true);
-        // dispatch({ type: types.login }); 
         navigate("/edit-item");
     };
 
     return (
+        <>
+        {visible && (
         <Card sx={{ minWidth: 275, m:3 }} >
         <CardContent>
         <div style={{ width: '100%' }}>
@@ -66,8 +72,8 @@ const Item = ({ item, setNewItem }) => {
                 <Box
                     component="img"
                     sx={{
-                        height: 90,
-                        width: 90,
+                        height: 70,
+                        width: 70,
                         flexShrink: 1,
                     }}
                     src={diccionarioIconos[item.categoria]}
@@ -89,7 +95,9 @@ const Item = ({ item, setNewItem }) => {
             </Box>
         </CardContent>
         </Card>
+        )}
+        </>
     )
 }
 
-export default Item;
+export default memo(Item);

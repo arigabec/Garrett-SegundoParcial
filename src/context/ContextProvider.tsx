@@ -18,4 +18,5 @@ const useStore = () => {
 const useDispatch = () => useContext(StoreContext)[1];
 
 export { StoreContext, useStore, useDispatch };
+
 export default StoreProvider;

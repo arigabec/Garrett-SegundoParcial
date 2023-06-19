@@ -1,31 +1,38 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "../../context/ContextProvider";
 import { useNavigate } from 'react-router-dom';
 import { types } from "../../context/storeReducer";
+import {v4 as uuidv4} from 'uuid';
 
-const FormNewItem = ({ items, setItems, setNewItem, type }) => {
+const FormNewItem = ({ type }) => {
     const [producto, setProducto] = useState("");
     const [categoria, setCategoria] = useState("");
     const [cantidad, setCantidad] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const inputRef = useRef();
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const item = [
             {
+                id: uuidv4(),
                 producto,
                 cantidad,
                 categoria,
             },
         ];
         console.log(item);
-        dispatch({ type: types.addItem }, item);    
+        dispatch({ type: types.addItem, payload: item});    
         navigate("/");
-        // setItems([...items, ...item]);
-        // setNewItem(false);
     };
 
     return (
@@ -37,6 +44,7 @@ const FormNewItem = ({ items, setItems, setNewItem, type }) => {
                     onChange={(e) => setProducto(e.target.value)}
                     fullWidth
                     margin="normal"
+                    inputRef={inputRef}
                 />
                 <TextField
                     label="Cantidad"
