@@ -1,7 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Description from './Description';
-import { useState, useMemo, memo } from 'react';
+import { useState, useMemo, memo, useEffect } from 'react';
 import { ButtonTask } from './ButtonTask';
 import { Box } from '@mui/material';
 import { useDispatch } from "../../context/ContextProvider";
@@ -90,7 +90,11 @@ const Item = ({ item }) => {
                 }}
             >
                 <ButtonTask tipoBoton="edit" accion={editTask}/>
-                <ButtonTask tipoBoton="check" accion={checkTask}/>
+                {completado ? (
+                    <ButtonTask tipoBoton="check" accion={checkTask}/>
+                ) : (
+                    <ButtonTask tipoBoton="uncheck" accion={checkTask}/>
+                )}
                 <ButtonTask tipoBoton="delete" accion={deleteTask}/>
             </Box>
         </CardContent>

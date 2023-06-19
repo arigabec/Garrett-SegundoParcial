@@ -45,6 +45,7 @@ const FormNewItem = ({ type }) => {
                     fullWidth
                     margin="normal"
                     inputRef={inputRef}
+                    required
                 />
                 <TextField
                     label="Cantidad"
@@ -52,6 +53,7 @@ const FormNewItem = ({ type }) => {
                     onChange={(e) => setCantidad(e.target.value)}
                     fullWidth
                     margin="normal"
+                    required
                 />
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="demo-simple-select-label"> Selecciona una categoría </InputLabel>
@@ -61,6 +63,7 @@ const FormNewItem = ({ type }) => {
                         value={categoria}
                         label="Categoria"
                         onChange={(e) => setCategoria(e.target.value)}
+                        required
                     >
                         <MenuItem value="Abarrotes"> Abarrotes </MenuItem>
                         <MenuItem value="Frutas"> Frutas </MenuItem>

@@ -17,6 +17,7 @@ export const HomePage = () => {
 
     useEffect(() => {
         console.log('Se cambio items', items);
+        localStorage.setItem('items', items);
     }, [items]);
     
   return (

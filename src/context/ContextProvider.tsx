@@ -1,22 +1,22 @@
 import { createContext, useContext, useReducer } from "react";
 import storeReducer, { initialValues } from "./storeReducer";
 
-const StoreContext = createContext();
+const ListContext = createContext();
 
-const StoreProvider = ({ children }) => {
+const ListProvider = ({ children }) => {
   return (
-    <StoreContext.Provider value={useReducer(storeReducer, initialValues)}>
+    <ListContext.Provider value={useReducer(storeReducer, initialValues)}>
       {children}
-    </StoreContext.Provider>
+    </ListContext.Provider>
   );
 };
 
 const useStore = () => {
-  console.log("contexto", useContext(StoreContext));
-  return useContext(StoreContext)[0];
+  console.log("contexto", useContext(ListContext));
+  return useContext(ListContext)[0];
 };
-const useDispatch = () => useContext(StoreContext)[1];
+const useDispatch = () => useContext(ListContext)[1];
 
-export { StoreContext, useStore, useDispatch };
+export { ListContext, useStore, useDispatch };
 
-export default StoreProvider;
+export default ListProvider;

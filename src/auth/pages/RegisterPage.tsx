@@ -3,7 +3,7 @@ import { AuthLayout } from "../layout/AuthLayout";
 
 export const RegisterPage = () => {
   return (
-    <AuthLayout title="Registrarse a Souvenir">
+    <AuthLayout title="Registrarse a lista de compras">
       <form>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -32,7 +32,7 @@ export const RegisterPage = () => {
           </Grid>
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" fullWidth>
+              <Button variant="contained" fullWidth  color="secondary">
                 Registrar
               </Button>
             </Grid>
